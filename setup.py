@@ -8,7 +8,7 @@ setup(
     description='A machine learning model for classification of cells and annotation of clusters in scRNA-seq data from liver samples.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/yourusername/liver_annotation',
+    url='https://github.com/mThkTrn/liver_annotation',
     packages=find_packages(),
     install_requires=[
         'torch',
