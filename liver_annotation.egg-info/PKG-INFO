@@ -2,7 +2,7 @@ Metadata-Version: 2.1
 Name: liver-annotation
 Version: 0.1.0
 Summary: A machine learning model for classification of cells and annotation of clusters in scRNA-seq data from liver samples.
-Home-page: https://github.com/yourusername/liver_annotation
+Home-page: https://github.com/mThkTrn/liver_annotation
 Author: Madhavendra Thakur
 Author-email: madhavendra.thakur@gmail.com
 License: UNKNOWN
