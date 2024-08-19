@@ -1,0 +1,9 @@
+LICENSE
+README.md
+setup.py
+liver_annotation/__init__.py
+liver_annotation.egg-info/PKG-INFO
+liver_annotation.egg-info/SOURCES.txt
+liver_annotation.egg-info/dependency_links.txt
+liver_annotation.egg-info/requires.txt
+liver_annotation.egg-info/top_level.txt
