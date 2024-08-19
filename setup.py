@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='liver_annotation',
-    version='0.1.0',
+    version='0.1.1',
     author='Madhavendra Thakur',
     author_email='madhavendra.thakur@gmail.com',
     description='A machine learning model for classification of cells and annotation of clusters in scRNA-seq data from liver samples.',
