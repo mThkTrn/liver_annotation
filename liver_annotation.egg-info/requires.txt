@@ -1,5 +1,4 @@
-torch
-joblib
-scipy
-numpy
-scanpy
+joblib>=1.4.2
+torch>=2.1.2
+scikit-learn>=1.2.2
+scipy>=1.11.4

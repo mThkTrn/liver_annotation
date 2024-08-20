@@ -1,4 +1,5 @@
 import torch
+import joblib
 from joblib import load
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
@@ -7,13 +8,21 @@ import numpy as np
 from joblib import load
 import sys
 import os
+import sklearn
 
-print(os.getcwd())
+print("joblib version:", joblib.__version__)
+print("torch version:", torch.__version__)
+print("scipy version:", scipy.__version__)
+print("sklearn version:", sklearn.__version__)
+
 # Load the objects using joblib
-human_gene_cols = load('models/human_gene_cols.joblib')
-hle = load('models/hle.joblib')
-mouse_gene_cols = load('models/mouse_gene_cols.joblib')
-mle = load('models/mle.joblib')
+models_dir = os.path.join(os.path.dirname(__file__), 'models')
+print(f"models_dir is {models_dir}")
+# Load the objects using joblib
+human_gene_cols = load(os.path.join(models_dir, 'human_gene_cols.joblib'))
+hle = load(os.path.join(models_dir, 'hle.joblib'))
+mouse_gene_cols = load(os.path.join(models_dir, 'mouse_gene_cols.joblib'))
+mle = load(os.path.join(models_dir, 'mle.joblib'))
 
 # Define the neural network class again to match the saved architecture
 class Net(nn.Module):
@@ -44,13 +53,13 @@ mouse_model_nn = Net(input_size=31053, hidden_size=m_hidden_size, num_classes=18
 
 # Load the state dictionaries
 
-human_state_dict = torch.load('models/human_model_nn.pth', map_location=torch.device('cpu'))
+human_state_dict = torch.load(os.path.join(models_dir, 'human_model_nn.pth'), map_location=torch.device('cpu'))
 
 new_human_state_dict = {k.replace('module.', ''): v for k, v in human_state_dict.items()}
 
 human_model_nn.load_state_dict(new_human_state_dict)
 
-mouse_state_dict = torch.load('models/mouse_model_nn.pth', map_location=torch.device('cpu'))
+mouse_state_dict = torch.load(os.path.join(models_dir, 'mouse_model_nn.pth'), map_location=torch.device('cpu'))
 
 new_mouse_state_dict = {k.replace('module.', ''): v for k, v in mouse_state_dict.items()}
 
@@ -63,8 +72,8 @@ human_model_nn.eval()
 mouse_model_nn.eval()
 
 # Load scikit-learn models using joblib
-mouse_model = load('models/mouse_model.joblib')
-human_model = load('models/human_model.joblib')
+mouse_model = load(os.path.join(models_dir, 'mouse_model.joblib'))
+human_model = load(os.path.join(models_dir, 'human_model.joblib'))
 
 print("All models loaded successfully.")
 
