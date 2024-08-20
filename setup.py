@@ -11,11 +11,10 @@ setup(
     url='https://github.com/mThkTrn/liver_annotation',
     packages=find_packages(),
     install_requires=[
-        'torch',
-        'joblib',
-        'scipy',
-        'numpy',
-        'scanpy',
+        'joblib>=1.4.2',
+        'torch>=2.1.2+cpu',
+        'scikit-learn>=1.2.2',
+        'scipy>=1.11.4'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
