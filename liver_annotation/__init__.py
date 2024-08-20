@@ -8,10 +8,12 @@ import numpy as np
 from joblib import load
 import sys
 import os
+import sklearn
 
 print("joblib version:", joblib.__version__)
 print("torch version:", torch.__version__)
 print("scipy version:", scipy.__version__)
+print("sklearn version:", sklearn.__version__)
 
 # Load the objects using joblib
 models_dir = os.path.join(os.path.dirname(__file__), 'models')

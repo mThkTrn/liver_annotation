@@ -1,18 +1,41 @@
 import unittest
 
+import joblib, torch, sklearn, scipy
+
 import liver_annotation as la
 
 import pandas as pd
 
 import anndata as ad
 
-import scipy
-
 import numpy as np
 
 import scanpy as sc
 
+from packaging import version
+
 class TestLibrary(unittest.TestCase):
+
+    
+    def test_joblib_version(self):
+        required_version = '1.4.2'
+        self.assertTrue(version.parse(joblib.__version__) >= version.parse(required_version),
+                        f"joblib version should be at least {required_version}")
+
+    def test_torch_version(self):
+        required_version = '2.1.2+cpu'
+        self.assertTrue(version.parse(torch.__version__) >= version.parse(required_version),
+                        f"torch version should be at least {required_version}")
+
+    def test_sklearn_version(self):
+        required_version = '1.2.2'
+        self.assertTrue(version.parse(sklearn.__version__) >= version.parse(required_version),
+                        f"scikit-learn version should be at least {required_version}")
+
+    def test_scipy_version(self):
+        required_version = '1.11.4'
+        self.assertTrue(version.parse(scipy.__version__) >= version.parse(required_version),
+                        f"scipy version should be at least {required_version}")
 
     def test_testdata_load(self):
         # import counts matrix
@@ -66,11 +89,9 @@ class TestLibrary(unittest.TestCase):
         # sc.tl.umap(adata)
         # sc.pl.umap(adata, color='leiden')
 
-        print(adata.obs['leiden'].value_counts())
-
         la.classify_cells(adata, species = "mouse")
 
-        print(la.cluster_annotations(adata, species = "mouse", clusters="leiden"))
+        return la.cluster_annotations(adata, species = "mouse", clusters="leiden")
 
 if __name__ == '__main__':
     unittest.main()
